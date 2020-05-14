@@ -1,5 +1,23 @@
 [h1]Birch World Start For Gigastructures[/h1]
 
+This gives you an origin that lets you start on a Birch World in the Galactic Core and appreciate the amazing Birch World graphics.  Elowiny swears that the symbols on it are actually planet sized habitats, I prefer to believe they are arcane runes because Birch World is Space Magic!
+
+It is an addition to, and requires [url=https://steamcommunity.com/workshop/filedetails/?id=1121692237]Gigastructural Engineering[/url]
+
+The birch world and surrounding systems will spawn on game start, and in the midgame the galactic core will automatically connect to the rest of the galaxy.
+
+You may find it's not actually as cushy a start as first appears.  Birch worlds are designed for much higher populations.  You need 200 just to build 1 of each district.  Be prepared to do some job management on starting: Dark Matter is less useful to you than food and consumer goods.
+
+There is an option on starting that will seed the galactic core with a number of active and ruined megastructures from [url=https://steamcommunity.com/workshop/filedetails/?id=1121692237]Gigastructural Engineering[/url], if you select this option and have [url=https://steamcommunity.com/workshop/filedetails/?id=865040033]Guilli's Planet Modifiers[/url] installed, it will also seed some appropreate modifiers.
+
+The game will hang on first start as it spawns the systems, this hanging is proportional to galaxy size.
+
+[h1]My Other Mods[/h1]
+[list]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1743133825]Starborn[/url]: An improved version of Voidtouched about habitat living
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1999512770]Extra Galactic Cluster Start[/url]: Start in an isolated cluster outside the galaxy.
+[/list]
+
 [b]Please Rate and Subscribe as it helps others find the mods[/b]
 [img]https://i.imgur.com/fVVaDCS.gif[/img]
 

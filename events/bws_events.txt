@@ -355,6 +355,7 @@ event = {
 					is_star = no
 					is_asteroid = no
 					is_moon = no
+					habitable_planet = no
 				}
 				save_event_target_as = molten_shipyard
 				change_pc = pc_molten
@@ -366,11 +367,98 @@ event = {
 				trigger_megastructure_icon = yes
 			}
 
+			# need to wait unti lthe MS is spawned to put GPM on it, so trigger bws.11 at the end of this in a day
 			spawn_megastructure = {
 				type = ring_shipyard_2
 				location = event_target:molten_shipyard
 			}
+
+			random_system_planet = {
+				limit = {
+					is_star = yes
+				}
+				change_pc = pc_neutron_star
+				set_planet_flag = has_megastructure
+				save_event_target_as = neutron_star
+				# Neutron stars don't have atomosphere effects, so end up with 
+				# odd behaviour.  Setting to A type first (also a silver colour)
+				# makes them much less noticable
+				set_planet_entity = {
+					entity = "a_star_class_star_entity"
+				}
+				set_planet_entity = {
+					entity = "neutron_star_entity"
+				}
+			}
+			spawn_megastructure = {
+				type = neutronium_gigaforge_ruined
+				location = event_target:neutron_star
+			}
 		}
+
+		event_target:giga_inner_6 = {
+			random_system_planet = {
+				limit = {
+					is_star = no
+					is_asteroid = no
+					is_moon = no
+					habitable_planet = no
+					NOT = { has_planet_flag = has_megastructure }
+				}
+				save_event_target_as = eng
+				set_planet_flag = has_megastructure
+			}
+
+			random_system_planet = {
+				limit = {
+					is_star = no
+					is_asteroid = no
+					is_moon = no
+					habitable_planet = no
+					NOT = { has_planet_flag = has_megastructure }
+				}
+				save_event_target_as = soc
+				set_planet_flag = has_megastructure
+			}
+
+			spawn_megastructure = {
+				type = engineering_megabase_ruined
+				location = event_target:eng
+			}
+			spawn_megastructure = {
+				type = massive_zoo_ruined
+				location = event_target:soc
+			}
+		}
+
+		event_target:giga_outer_1 = {
+			random_system_planet = {
+				limit = { 
+					is_star = yes
+				}
+				# Neutron stars don't have atomosphere effects, so end up with 
+				# odd behaviour.  Setting to A type first (also a silver colour)
+				# makes them much less noticable
+				set_planet_entity = {
+					entity = "a_star_class_star_entity"
+				}
+				set_planet_entity = {
+					entity = "neutron_star_entity"
+				}
+				change_pc = pc_neutron_star
+				set_planet_size = 5
+			}
+			every_system_planet = {
+				limit = {
+					is_star = no
+					is_moon = no
+					habitable_planet = no
+				}
+				remove_deposit = yes
+				add_deposit = d_iodizium_deposit
+			}
+		}
+
 
 		if = {
 			limit = {
@@ -391,6 +479,7 @@ event = {
 		
 		country_event = {
 			id = bws.11
+			days = 1
 		}
 	}
 }
