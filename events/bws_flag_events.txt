@@ -1,0 +1,16 @@
+namespace = bws_flag
+
+country_event = {
+	id = bws_flag.1
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_bws
+	}
+	immediate = {
+		set_global_flag = BWS_YES
+		set_global_flag = birch_black_hole_occured
+		set_country_flag = found_giga_black_hole
+	}
+}

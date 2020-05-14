@@ -1,0 +1,21 @@
+origin_bws = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_resource_consolidation.dds"
+	picture = GFX_origin_bws
+	description = "origin_bws_effects"
+
+	starting_colony = pc_birch
+	habitability_preference = pc_birch
+	preferred_planet_class_neighbor = no
+	max_once_global = yes
+	#initializers = { bws_start }
+
+	flags = { custom_start_screen }
+
+	possible = {
+	}
+
+	# No random weights because weight = 0 does not actually mean 0 and the AI still takes it.
+	# No random_weight block removes it from the lists
+}
+

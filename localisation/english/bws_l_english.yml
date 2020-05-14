@@ -1,0 +1,31 @@
+﻿l_english:
+  origin_bws:0 "Birch World"
+  origin_bws_desc:0 "You are the remnant of a long forgotten civilisation, living in the echoing expanse of a $pc_birch$ at the galatic core built by your ancestors."
+  origin_bws_effects:0 "You will start on a $pc_birch$ isolated at the Galatic Core.\nBecause this requires spawning the core after galaxy generation you will actually move there just before game start, so will maintain the knowledge of your original home cluster.\n\nThe $pc_birch$ was designed for a much larger population, so you will need to do some job management at the start to survive"
+
+  START_SCREEN_BWS:0 "We do not know what happened to our ancestors.  Enemies, plague, civil war?  They exist now as myths and legends, their knowledge and power lost.  They somehow built this vast world around the black hole at the centre of our galaxy, now we live in the vast, echoing expanse designed to house a million times more people than are left.\nAs all but the last sections have fallen into disrepair and uselessness our people have been filled with a new sense of purpose: we must unite and take our place against in the stars, or we will be lost forever to history.\n\nOur first order of business will be to appoint a govenor. Then we need to make sure we are working the right jobs:\nWe need a §Y$job_structure_manager$§! to stop the place falling to ruins\nWe need to get people working the §Y$building_hydroponics_farm$§! before we run out of food and starve.\n\nWe may have to unemploy some people from their preferred job to make that happen.  There is a decision §Y$decision_bws_demote$§! to remind them how close we are to extinction"
+
+  decision_bws_demote:0 "All In This Together"
+  decision_bws_demote_desc:0 "If we are going to survive as a people everyone needs to be ready to do any job.  It doesn't matter if your last role was ruling over us like a noble, right now we need more farmers in the hydroponics bay before we starve."
+  decision_bws_demote_effect:0 "All unemployed pops will be immiedately demoted to workers.  Enact again to force pops to find work.  No effect on employed pops."
+  
+  bws_extra_district:0 "Crumbling Districts"
+  bws_extra_district_desc:0 "Centuries, possibly millennia, of neglect have taken their toll and major structural sections are about to collapse and fall into the black hole.  We need to ensure we have a §Y$job_structure_manager$§! so that our key districts remain intact"
+
+  birch.10.alt.name:0 "Core Hyperlanes Discovered"
+  birch.10.alt.desc:0 "We have managed to get sensors working properly again and have discovered that we are not alone in the centre of the galaxy.  There are a small number of systems that have been pulled closer than the main galactic ring by the black holes gavity.\n\nAt present there seems to be no connection to the rest of the galaxy.  From our translation of log fragments we believe that the black holes gravity interferes with connections between the inner and the regular systems and that any hyperlanes between would be weakened and faded without tavel.\n\nWe theorise that as we travel the network the residual tachyon energy will eventually cause the hyperlanes to reopen"
+
+  bws.20.name:0 "Galactic Core Connects to Galaxy"
+  bws.20.desc:0 "With a surge detectable on all our instruments hyperlanes have opened between the Galatic Core and the rest of the Galaxy.\n\nWe can leave.  But what will we find waiting for us?"
+
+  bws_birch.10.b:0 "Hope our ancestors also left more behind"
+  bws_birch.10.b.tooltip:0 "This will spawn some megastructures in the central cluster"
+
+  d_lost_pops1:0 "Lost Communities"
+  d_lost_pops1_desc:0 "The surface is so vast that there are whole communities living isolated, we must bring them back into the fold"
+
+  d_lost_pops2:0 "$d_lost_pops1$"
+  d_lost_pops2_desc:0 "We must range further through the empty structure to try and find survivors"
+
+  d_lost_pops3:0 "$d_lost_pops1$"
+  d_lost_pops3_desc:0 "By bringing all our technological prowess and ships to bear, we can find any remaing significant population"

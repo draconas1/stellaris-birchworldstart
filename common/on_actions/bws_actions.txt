@@ -1,0 +1,18 @@
+on_game_start_country = {
+	events = {
+		bws_flag.1
+		bws.1
+	}
+}
+
+on_press_begin = {
+	events = {
+		birch.10
+	}
+}
+
+on_yearly_pulse_country = {
+	events = {
+		bws.20 
+	}
+}

@@ -1,0 +1,491 @@
+namespace = bws
+
+country_event = {
+	id = bws.1
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_bws
+	}
+	immediate = {
+		# This is based off Extra Glatic Cluster Start, by Draconas
+
+		# Give key techs to make districts not dissappear
+		give_technology = {
+			tech = tech_birch_world
+			message = no
+		}
+		give_technology = {
+			tech = tech_operations_extraction
+			message = no
+		}
+		give_technology = {
+			tech = tech_insula_ktisma
+			message = no
+		}
+		give_technology = {
+			tech = tech_insula_physma
+			message = no
+		}
+		give_technology = {
+			tech = tech_hydroponics
+			message = no
+		}
+
+		#tag our old home planet
+		random_owned_planet = {
+			save_event_target_as = previous_home_planet
+			solar_system = {
+				save_event_target_as = previous_home_system
+			}
+		}
+		
+		# Spawn the Birch World System
+
+		# No scope puts our relative coordinate as the galatic centre
+		no_scope = {
+			spawn_system = {
+				min_distance >= 0
+				max_distance <= 0
+				min_orientation_angle = 44
+				max_orientation_angle = 46
+				initializer = giga_black_hole_core_initializer
+			}
+		}
+
+		# Setup the System
+		event_target:giga_core_system = {
+			# Spawn the Birch World from the system and do the other things that building the megastructure would do
+			set_star_flag = has_giga
+			set_star_flag = has_megastructure
+			set_star_flag = empire_cluster
+			set_star_flag = empire_home_system
+
+			# when it spawned it got auto-linked to a random star
+			isolate_system = yes
+
+			random_system_planet = {
+				limit = {
+					is_planet_class = pc_core_black_hole
+				}
+				set_planet_flag = has_megastructure
+				change_planet_size = -10
+				save_event_target_as = core_bh
+				set_name = "Eye of Eternity"
+				remove_deposit = yes
+			}
+
+			spawn_planet = {
+				class = "pc_birch"
+				location = event_target:core_bh
+				size = 1
+				has_ring = no
+				
+				init_effect = {				
+					set_name = "Birch World"
+					surveyed = {
+						set_surveyed = yes
+						surveyor = ROOT
+					}
+					set_all_comms_surveyed = yes
+					clear_blockers = yes
+					set_planet_flag = megastructure
+					set_planet_flag = habitat
+					add_district = operations_structure
+					set_planet_flag = colony_event
+					save_event_target_as = birch_world
+					add_modifier = {
+						modifier = bws_extra_district
+						days = 356
+					}
+				}
+			}
+
+			# Add a starbase
+			# Does not deal with the difference between normal and gestalt.  Player, that is your problem, frankly you have bigger ones that 3 energy.
+			create_starbase = {
+				size = "starbase_starport"
+				module = "shipyard"
+				building = "crew_quarters"
+				owner = root
+			}
+		}
+
+		# Give the player the Birch World Planet
+		event_target:birch_world = {
+			remove_deposit = yes
+			clear_planet_modifiers = yes
+			clear_blockers = yes
+			set_owner = root
+			set_controller = root
+			set_capital = yes
+
+			add_district = operations_extraction
+			# add_district = insula_ktisma
+			# add_district = insula_physma
+
+			add_deposit = d_lost_pops1
+
+			# Give it some buildings
+			if = {
+				limit = { owner = { is_regular_empire = yes } }
+				# 3 jobs
+				add_building = building_capital
+
+				# 2 jobs 
+				# farmers are more useful than beuocrats
+				#add_building = building_bureaucratic_1
+
+				# 2 jobs
+				add_building = building_research_lab_1
+
+				# 2 jobs
+				add_building = building_foundry_1
+
+				# 2 jobs
+				add_building = building_factory_1
+
+				add_building = building_hydroponics_farm
+				add_building = building_hydroponics_farm
+			}
+			if = {
+				limit = { owner = { is_hive_empire = yes } }
+				# 5 jobs
+				add_building = building_hive_capital
+
+				# 2 jobs
+				#add_building = building_hive_node
+
+				# 2 jobs
+				add_building = building_research_lab_1
+
+				# 2 jobs
+				add_building = building_foundry_1
+
+				# 1 job
+				add_building = building_spawning_pool
+
+				# 1 job
+				#add_building = building_hive_warren
+
+				add_building = building_hydroponics_farm
+				add_building = building_hydroponics_farm
+			}
+
+			if = {
+				limit = { owner = { is_machine_empire = yes } }
+	
+				# 6 jobs
+				add_building = building_machine_capital
+	
+				# 1 job
+				add_building = building_machine_assembly_plant
+	
+				# 2 job
+				add_building = building_uplink_node
+	
+				# 2 jobs
+				add_building = building_research_lab_1
+	
+				# 2 jobs
+				add_building = building_foundry_1		
+	
+				#Servitors
+				if = {
+					limit = { owner = { has_civic = civic_machine_servitor } }
+					add_building = building_organic_sanctuary
+					add_building = building_hydroponics_farm
+				}
+
+				#assimilators
+				if = {
+					limit = { owner = { has_civic = civic_machine_assimilator } }
+					add_building = building_hydroponics_farm
+				}
+			}
+
+
+			# rogue servitors get pops moved, everyone else gets them regenerated to avoid unemployment
+			# otherwise the RS pop generation will use the very last species for the pampered organics not the original ones
+			if = {
+				limit = {
+					root = {
+						NOR = {
+							has_civic = civic_machine_servitor
+							has_civic = civic_machine_assimilator
+						}
+					}
+				}
+				generate_start_pops = yes
+			}
+		}
+
+
+		# Move player ships
+		every_owned_fleet = {
+			limit = {
+				any_owned_ship = {
+					OR = {
+						is_ship_size = corvette
+						is_ship_size = constructor
+						is_ship_size = science
+					}
+				}
+			}
+			set_location = event_target:birch_world
+		}
+
+		# Remove the old home planet
+		event_target:previous_home_planet = {
+			# non gestalts get new pops, gestalts get pops moved to make servitors work
+			if = {
+				limit = {
+					root = { 
+						OR = {
+							has_civic = civic_machine_servitor
+							has_civic = civic_machine_assimilator
+						}
+					}
+				}
+				every_owned_pop = {
+					resettle_pop = {
+						pop = this
+						planet = event_target:birch_world
+					}
+					unemploy_pop = yes
+				}
+			}
+			change_pc = pc_nuked
+			destroy_colony = yes
+			reroll_planet = yes
+		}
+
+		# unclaim the old home system
+		event_target:previous_home_system = {
+			every_fleet_in_system = {
+				delete_fleet = this
+			}
+			every_system_planet = {
+				surveyed = {
+					set_surveyed = no
+					surveyor = ROOT
+				}
+			}
+
+			remove_star_flag = empire_home_system
+			remove_star_flag = empire_cluster
+			every_neighbor_system = {
+				remove_star_flag = empire_cluster
+			}
+		}
+
+		# Set species homeworld
+		owner_species = { 
+			set_species_homeworld = event_target:birch_world 
+		}
+		every_owned_pop_species = {
+            set_species_homeworld = event_target:birch_world
+		}
+
+		country_event = {
+			id = bws.2
+			days = 2
+		}
+	}
+}
+
+# set flag, needs to be day 2 to ensure that the global country has been spawned
+# on start events are non deterministic
+country_event = {
+	id = bws.2
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		has_origin = origin_bws
+	}
+	immediate = {
+		random_country = {
+			limit = { is_country_type = global_event }
+			set_global_flag = birch_black_hole_occured
+		}
+	}
+}
+
+# spawn megastructures
+event = {
+	id = bws.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		event_target:giga_inner_2 = {
+			random_system_planet = {
+				limit = {
+					is_star = no
+					is_asteroid = no
+					is_moon = no
+				}
+				change_pc = pc_giga_planetary_computer
+				set_planet_size = 16
+				add_modifier = { modifier = giga_planetary_computer }
+				set_planet_flag = planetary_computer
+				set_planet_flag = is_planetary_computer
+				trigger_megastructure_icon = yes
+
+				if = {
+					limit = {
+						has_global_flag = guillis_planet_modifiers_active
+					}
+					add_modifier = {
+						modifier = gpm_precursor_communication_hub
+					}
+					add_modifier = {
+						modifier = gpm_precursor_singularity_drive
+					}
+					add_deposit = gpm_d_precursor_ruins_4
+					gpm_designate_precursor_world = yes
+				}
+			}
+		}
+
+		event_target:giga_inner_3 = {
+			random_system_planet = {
+				limit = {
+					is_star = no
+					is_asteroid = no
+					is_moon = no
+				}
+				save_event_target_as = molten_shipyard
+				change_pc = pc_molten
+				set_planet_size = 20
+				every_moon = {
+					remove_planet = yes
+				}
+				set_planet_flag = has_equatorial_shipyard
+				trigger_megastructure_icon = yes
+			}
+
+			spawn_megastructure = {
+				type = ring_shipyard_2
+				location = event_target:molten_shipyard
+			}
+		}
+
+		if = {
+			limit = {
+				has_global_flag = guillis_planet_modifiers_active
+			}
+			event_target:giga_core_system = {
+				random_system_planet = {
+					limit = {
+						is_planet_class = pc_melted_frozen
+					}
+					add_deposit = "gpm_d_amoeba_sea"
+					add_modifier = { modifier = gpm_planet_wonder_discovered }
+					set_planet_flag = gpm_is_wondrous_world
+				}
+			}
+		}
+		
+		
+		country_event = {
+			id = bws.11
+		}
+	}
+}
+
+country_event = {
+	id = bws.11
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = has_guillis_planet_modifiers_mod
+	}
+
+	immediate = {
+		event_target:giga_inner_3 = {
+			random_system_planet = {
+				limit = {
+					is_planet_class = pc_ringworld_alloys
+				}
+				add_modifier = {
+					modifier = gpm_precursor_manufactorium
+				}
+				add_modifier = {
+					modifier = gpm_precursor_shipyards
+				}
+				add_deposit = gpm_d_precursor_ruins_4
+				gpm_designate_precursor_world = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = bws.20
+	title = bws.20.name
+	desc = bws.20.desc
+	picture = GFX_evt_black_hole
+	show_sound = event_sensor_ping
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_bws
+		mid_game_years_passed >= 1
+	}
+
+	immediate = {
+		set_spawn_system_batch = begin
+		
+		event_target:giga_outer_1 = {
+			random_neighbor_system = {
+				limit = {
+					NOT = {
+						has_star_flag = giga_inner
+					}
+				}
+				ignore_hyperlanes = yes
+				add_hyperlane = {
+					from = PREV
+					to = THIS
+				}
+			}
+		}
+		event_target:giga_outer_2 = {
+			random_neighbor_system = {
+				limit = {
+					NOT = {
+						has_star_flag = giga_inner
+					}
+				}
+				ignore_hyperlanes = yes
+				add_hyperlane = {
+					from = PREV
+					to = THIS
+				}
+			}
+		}
+		event_target:giga_outer_3 = {
+			random_neighbor_system = {
+				limit = {
+					NOT = {
+						has_star_flag = giga_inner
+					}
+				}
+				ignore_hyperlanes = yes
+				add_hyperlane = {
+					from = PREV
+					to = THIS
+				}
+			}
+		}
+
+		set_spawn_system_batch = end
+	}
+	
+	option = {
+		name = birch.10.a
+	}
+}

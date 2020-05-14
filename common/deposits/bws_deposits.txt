@@ -1,0 +1,184 @@
+d_lost_pops1 = {
+	icon = d_metal_boneyard
+	time = 500
+
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+	}
+
+	on_cleared = {
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+	}
+
+	blocker_swap_types = {
+		d_lost_pops2
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+			unity = 200
+			influence = 25
+		}
+	}
+}
+
+d_lost_pops2 = {
+	icon = d_metal_boneyard
+	time = 1000
+
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+	}
+
+	on_cleared = {
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+	}
+
+	blocker_swap_types = {
+		d_lost_pops3
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1500
+			unity = 500
+			influence = 50
+		}
+	}
+}
+
+d_lost_pops3 = {
+	icon = d_metal_boneyard
+	time = 2000
+
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+	}
+
+	on_cleared = {
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2500
+			unity = 1000
+			influence = 100
+		}
+	}
+}
