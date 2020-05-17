@@ -17,5 +17,7 @@ origin_bws = {
 
 	# No random weights because weight = 0 does not actually mean 0 and the AI still takes it.
 	# No random_weight block removes it from the lists
+
+	random_weight = { value = 0 }
 }
 

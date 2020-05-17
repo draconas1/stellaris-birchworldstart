@@ -8,6 +8,7 @@ decision_bws_demote = {
 		has_owner = yes
 		owner = {
 			has_origin = origin_bws
+			is_regular_empire = yes
 		}
 	}
 	
@@ -21,6 +22,215 @@ decision_bws_demote = {
 		}
 
 		check_planet_employment = yes
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_bws_findpops1 = {
+	owned_planets_only = yes
+	icon = decision_derelict_interior
+	enactment_time = 500
+
+	potential = {
+		is_planet_class = pc_birch
+		NOT = { 
+			has_planet_flag = bws_findpops1
+		}
+		has_owner = yes
+		owner = {
+			has_origin = origin_bws
+		}
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 1000
+			unity = 200
+			influence = 50
+		}
+	}
+	
+	effect = {
+		hidden_effect = {
+			set_planet_flag = bws_findpops1
+		}
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+
+decision_bws_findpops2 = {
+	owned_planets_only = yes
+	icon = decision_derelict_interior
+	enactment_time = 1500
+
+	potential = {
+		is_planet_class = pc_birch
+		has_planet_flag = bws_findpops1
+		NOR = { 
+			has_planet_flag = bws_findpops2
+			has_planet_flag = bws_findpops3
+		}
+		has_owner = yes
+		owner = {
+			has_origin = origin_bws
+		}
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 2500
+			unity = 1250
+			influence = 100
+		}
+	}
+	
+	effect = {
+		hidden_effect = {
+			set_planet_flag = bws_findpops2
+		}
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+
+decision_bws_findpops3 = {
+	owned_planets_only = yes
+	icon = decision_derelict_interior
+	enactment_time = 3000
+
+	potential = {
+		is_planet_class = pc_birch
+		has_planet_flag = bws_findpops2
+		has_owner = yes
+		owner = {
+			has_origin = origin_bws
+		}
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 5000
+			unity = 2500
+			influence = 250
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
 	}
 	
 	ai_weight = {

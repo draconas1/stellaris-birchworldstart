@@ -7,12 +7,14 @@ on_game_start_country = {
 
 on_press_begin = {
 	events = {
-		birch.10
+		bws.9
 	}
 }
 
 on_yearly_pulse_country = {
 	events = {
 		bws.20 
+		bws.22 # compatibility - add project
+		bws.23 # open at endgame
 	}
 }

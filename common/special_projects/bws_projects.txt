@@ -1,0 +1,26 @@
+special_project = {
+	key = "INVESTIGATE_GALACTIC_CORE_LINK"
+	cost = 10000
+	tech_department = physics_technology
+	picture = GFX_evt_black_hole
+	location = no
+	timelimit = -1
+	
+	event_scope = planet_event
+	
+	requirements = {
+	}
+	
+	on_success = {		
+		event_target:find_galactic_core_owner = {
+			set_country_flag = bws_completed_hyperlane_project
+			country_event = { id = bws.21 }
+		}
+	}
+	
+	on_fail = {
+	}
+	
+	on_start = {
+	}
+}

@@ -12,6 +12,7 @@ There is an option on starting that will seed the galactic core with a number of
 
 The game will hang on first start as it spawns the systems, this hanging is proportional to galaxy size.
 
+
 [h1]My Other Mods[/h1]
 [list]
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1743133825]Starborn[/url]: An improved version of Voidtouched about habitat living

@@ -13,19 +13,32 @@
   bws_extra_district_desc:0 "Centuries, possibly millennia, of neglect have taken their toll and major structural sections are about to collapse and fall into the black hole.  We need to ensure we have a §Y$job_structure_manager$§! so that our key districts remain intact"
 
   birch.10.alt.name:0 "Core Hyperlanes Discovered"
-  birch.10.alt.desc:0 "We have managed to get sensors working properly again and have discovered that we are not alone in the centre of the galaxy.  There are a small number of systems that have been pulled closer than the main galactic ring by the black holes gavity.\n\nAt present there seems to be no connection to the rest of the galaxy.  From our translation of log fragments we believe that the black holes gravity interferes with connections between the inner and the regular systems and that any hyperlanes between would be weakened and faded without tavel.\n\nWe theorise that as we travel the network the residual tachyon energy will eventually cause the hyperlanes to reopen"
-
-  bws.20.name:0 "Galactic Core Connects to Galaxy"
-  bws.20.desc:0 "With a surge detectable on all our instruments hyperlanes have opened between the Galatic Core and the rest of the Galaxy.\n\nWe can leave.  But what will we find waiting for us?"
-
+  birch.10.alt.desc:0 "We have managed to get sensors working properly again and have discovered that we are not alone in the centre of the galaxy.  There are a small number of systems that have been pulled closer than the main galactic ring by the black holes gavity.\n\nAt present there seems to be no connection to the rest of the galaxy.  From our translation of log fragments we believe that the black holes gravity interferes with connections between the inner and the regular systems and that any hyperlanes between would be weakened and faded without tavel.\n\nWe have issued a §Yspecial project§! to locate and open them"
   bws_birch.10.b:0 "Hope our ancestors also left more behind"
   bws_birch.10.b.tooltip:0 "This will spawn some megastructures in the central cluster"
 
-  d_lost_pops1:0 "Lost Communities"
-  d_lost_pops1_desc:0 "The surface is so vast that there are whole communities living isolated, we must bring them back into the fold"
+  bws.21.name:0 "Galactic Core Connects to Galaxy"
+  bws.21.desc:0 "With a surge detectable on all our instruments hyperlanes have opened between the Galatic Core and the rest of the Galaxy.\n\nWe can leave.  But what will we find waiting for us?"
+  bws.21.desc2:0 "With a surge detectable on all our instruments hyperlanes have opened between the Galatic Core and the rest of the Galaxy.\n\nThis wasn't caused by us, we are sure of it!  The Galaxy is coming in"
 
-  d_lost_pops2:0 "$d_lost_pops1$"
-  d_lost_pops2_desc:0 "We must range further through the empty structure to try and find survivors"
+  bws.30.name:0 "Ancestor Research"
+  bws.30.desc:0 "This world is vast beyond imagining, there has to be evidence of who our ancestors were and what marvels of power they possessed."
+  bws.30.a:0 "Some Things Are Better Left Buried"
+  bws.30.b:0 "Let Us Seek Their Power"
+  bws.30.b.desc:0 "§RWARNING§!  This will immiedately trigger a Crisis"
 
-  d_lost_pops3:0 "$d_lost_pops1$"
-  d_lost_pops3_desc:0 "By bringing all our technological prowess and ships to bear, we can find any remaing significant population"
+  bws.31.name:0 "Discovery"
+  bws.31.desc:0 "Our searching through the worlds achives we discovered the following fragmentary log\n\n.....centred on our capital dsgf7 core....\n\n.......23498dsjfnvbvqadghavjsnfs.......sdkjfsdjb only 20 black holes8nzcx, xzkjhaijhwrslcb465£$%%Y\n\n...............transcending.....cdxfer546sfq2\n\n.jg5e24fds.........Singularity Event.............\n\n\n\nThere is a large amount of log degraded beyond recovery, but one final fragment was recovered\n\n......djhwncat have we unleashed?!!%^&%&*(&%%%^"
+  bws.31.a:0 "Worrying"
+
+  decision_bws_findpops1:0 "Find Lost Communities"
+  decision_bws_findpops1_desc:0 "The surface is so vast that there are whole communities living isolated, we must bring them back into the fold"
+
+  decision_bws_findpops2:0 "$decision_bws_findpops1$"
+  decision_bws_findpops2_desc:0 "We must range further through the empty structure to try and find survivors"
+
+  decision_bws_findpops3:0 "$decision_bws_findpops1$"
+  decision_bws_findpops3_desc:0 "The surface is so vast there are always isolated communities of survivors, but it will take extensive effort and resources"
+
+  INVESTIGATE_GALACTIC_CORE_LINK:0 "Locate Galactic Core Connecting Hyperlanes"
+  INVESTIGATE_GALACTIC_CORE_LINK_DESC:0 "Our projections show that there should be hyperlanes between the core and the rest of the galaxy.  With sufficient research effort we should be able to locate and activate them"
