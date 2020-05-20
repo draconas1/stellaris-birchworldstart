@@ -293,6 +293,18 @@ country_event = {
 			id = bws.30
 			days = 20
 		}
+
+		if = {
+			limit = {
+				NOT = {
+					exists = event_target:birch_world
+				}
+			}
+			country_event = {
+				id = bws.3
+			}
+		}
+		
 	}
 }
 
@@ -312,6 +324,19 @@ country_event = {
 		}
 	}
 }
+
+#Fail Message
+country_event = {
+	id = bws.3
+	is_triggered_only = yes
+	title = bws.3.name
+	desc = bws.3.desc
+
+	trigger = {
+		has_origin = origin_bws
+	}
+}
+
 
 country_event = {
 	id = bws.9
