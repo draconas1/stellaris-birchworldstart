@@ -3,8 +3,27 @@
 # that's why there is a 0 prefix on the file
 part = {
         location = 0
-        localization = "START_SCREEN_BWS"	
+        localization = "START_SCREEN_BWS"
         trigger = {
                 has_origin = origin_bws
+                is_regular_empire = yes
+        }		
+}
+
+part = {
+        location = 0
+        localization = "START_SCREEN_BWS_HIVE"
+        trigger = {
+                has_origin = origin_bws
+                is_hive_empire = yes
+        }		
+}
+
+part = {
+        location = 0
+        localization = "START_SCREEN_BWS_MACHINE"
+        trigger = {
+                has_origin = origin_bws
+                is_machine_empire = yes
         }		
 }

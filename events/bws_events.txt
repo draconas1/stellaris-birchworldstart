@@ -77,8 +77,7 @@ country_event = {
 			}
 
 			spawn_planet = {
-				class = "pc_birch"
-				location = event_target:core_bh
+				class = "pc_birch"				
 				size = 1
 				has_ring = no
 				
@@ -124,8 +123,6 @@ country_event = {
 			add_district = operations_extraction
 			# add_district = insula_ktisma
 			# add_district = insula_physma
-
-			add_deposit = d_lost_pops1
 
 			# Give it some buildings
 			if = {

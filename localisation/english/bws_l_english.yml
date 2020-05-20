@@ -3,11 +3,22 @@
   origin_bws_desc:0 "You are the remnant of a long forgotten civilisation, living in the echoing expanse of a $pc_birch$ at the galatic core built by your ancestors."
   origin_bws_effects:0 "You will start on a $pc_birch$ isolated at the Galatic Core.\nBecause this requires spawning the core after galaxy generation you will actually move there just before game start, so will maintain the knowledge of your original home cluster.\n\nThe $pc_birch$ was designed for a much larger population, so you will need to do some job management at the start to survive"
 
-  START_SCREEN_BWS:0 "We do not know what happened to our ancestors.  Enemies, plague, civil war?  They exist now as myths and legends, their knowledge and power lost.  They somehow built this vast world around the black hole at the centre of our galaxy, now we live in the vast, echoing expanse designed to house a million times more people than are left.\nAs all but the last sections have fallen into disrepair and uselessness our people have been filled with a new sense of purpose: we must unite and take our place against in the stars, or we will be lost forever to history.\n\nOur first order of business will be to appoint a govenor. Then we need to make sure we are working the right jobs:\nWe need a §Y$job_structure_manager$§! to stop the place falling to ruins\nWe need to get people working the §Y$building_hydroponics_farm$§! before we run out of food and starve.\n\nWe may have to unemploy some people from their preferred job to make that happen.  There is a decision §Y$decision_bws_demote$§! to remind them how close we are to extinction"
+  START_SCREEN_COMMON:0  "We do not know what happened to our ancestors.  Enemies, plague, civil war?  They exist now as myths and legends, their knowledge and power lost.  They somehow built this vast world around the black hole at the centre of our galaxy, now we live in the vast, echoing expanse designed to house a million times more people than are left.\nAs all but the last sections have fallen into disrepair and uselessness our people have been filled with a new sense of purpose: we must unite and take our place against in the stars, or we will be lost forever to history.\n\nOur first order of business will be to appoint a govenor. Then we need to make sure we are working the right jobs:\n"
+
+  START_SCREEN_BWS:0 "$START_SCREEN_COMMON$We need a §Y$job_structure_manager$§! to stop the place falling to ruins\nWe need to get people working the §Y$building_hydroponics_farm$§! before we run out of food and starve.\n\nWe may have to unemploy some people from their preferred job to make that happen.  There is a decision §Y$decision_bws_demote$§! to remind them how close we are to extinction"
+
+  START_SCREEN_BWS_HIVE:0 "$START_SCREEN_COMMON$We need a §Y$job_structure_process$§! to stop the place falling to ruins\nWe need to get drones working the §Y$building_hydroponics_farm$§! before we run out of food and starve"
+
+  START_SCREEN_BWS_MACHINE:0 "$START_SCREEN_COMMON$We need a §Y$job_structure_process$§! to stop the place falling to ruins"
+
+  trait_pc_birch_preference:0 "$pc_birch$ Preference"
+  trait_pc_birch_preference_desc:0 "The $pc_birch$ is so vast that it encompasses many different biomes"
+
+  mod_pc_birch_habitability:0 "$pc_birch$ Habitability"
 
   decision_bws_demote:0 "All In This Together"
   decision_bws_demote_desc:0 "If we are going to survive as a people everyone needs to be ready to do any job.  It doesn't matter if your last role was ruling over us like a noble, right now we need more farmers in the hydroponics bay before we starve."
-  decision_bws_demote_effect:0 "All unemployed pops will be immiedately demoted to workers.  Enact again to force pops to find work.  No effect on employed pops."
+  decision_bws_demote_effect:0 "All unemployed pops will be immiedately demoted to workers.  Next day planet jobs will be recalculated.  No effect on employed pops."
   
   bws_extra_district:0 "Crumbling Districts"
   bws_extra_district_desc:0 "Centuries, possibly millennia, of neglect have taken their toll and major structural sections are about to collapse and fall into the black hole.  We need to ensure we have a §Y$job_structure_manager$§! so that our key districts remain intact"
@@ -25,7 +36,7 @@
   bws.30.desc:0 "This world is vast beyond imagining, there has to be evidence of who our ancestors were and what marvels of power they possessed."
   bws.30.a:0 "Some Things Are Better Left Buried"
   bws.30.b:0 "Let Us Seek Their Power"
-  bws.30.b.desc:0 "§RWARNING§!  This will immiedately trigger a Crisis"
+  bws.30.b.desc:0 "§RWARNING§!  This will immiedately trigger the Contingency\nThis Feature is experimental and may behave unpredictably"
 
   bws.31.name:0 "Discovery"
   bws.31.desc:0 "Our searching through the worlds achives we discovered the following fragmentary log\n\n.....centred on our capital dsgf7 core....\n\n.......23498dsjfnvbvqadghavjsnfs.......sdkjfsdjb only 20 black holes8nzcx, xzkjhaijhwrslcb465£$%%Y\n\n...............transcending.....cdxfer546sfq2\n\n.jg5e24fds.........Singularity Event.............\n\n\n\nThere is a large amount of log degraded beyond recovery, but one final fragment was recovered\n\n......djhwncat have we unleashed?!!%^&%&*(&%%%^"
