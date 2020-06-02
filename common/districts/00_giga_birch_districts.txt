@@ -28,6 +28,10 @@ operations_structure = {
 		}		
 	}
 
+	planet_modifier = {
+		planet_housing_add = 30
+	}
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
