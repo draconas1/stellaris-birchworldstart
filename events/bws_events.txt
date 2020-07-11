@@ -53,6 +53,10 @@ country_event = {
 				initializer = giga_black_hole_core_initializer
 			}
 		}
+		# I split the system spawn into 2 parts and only running the birch system on game start to try and reduce 
+		# lag on game start
+		# spawning an extra-galatic cluster tends to lag the game, doubly so on game start that is already a busy peroid.
+
 
 		# Setup the System
 		event_target:giga_core_system = {
@@ -91,9 +95,16 @@ country_event = {
 					clear_blockers = yes
 					set_planet_flag = megastructure
 					set_planet_flag = habitat
-					add_district = operations_structure
+					add_district = operations_structure # default district with the +district jobs.  
 					set_planet_flag = colony_event
 					save_event_target_as = birch_world
+					
+					# This modifier is needed for game start: - I need to give the player the mining district, 
+					# however the birch world only has room for 1 district and will not process the +1 district
+					# from jobs until post game start.  So if we try to add a 2nd district here it will instantly vanish 
+					# due to being over the world size.
+					# Adding this modifier gives the extra district initally + if for some reason a job priority doesn't immiedately
+					# populate the co-ordinator job, lets the player get sorted out such that they can support 2 districts normally.
 					add_modifier = {
 						modifier = bws_extra_district
 						days = 356
@@ -120,11 +131,11 @@ country_event = {
 			set_controller = root
 			set_capital = yes
 
-			add_district = operations_extraction
-			# add_district = insula_ktisma
-			# add_district = insula_physma
+			add_district = operations_extraction # mining district.  
 
 			# Give it some buildings
+			# Taken from the standard empire init scipts, but modified to make more sense for birch world
+			# Farmers, farmers are a thing.  
 			if = {
 				limit = { owner = { is_regular_empire = yes } }
 				# 3 jobs
@@ -201,21 +212,6 @@ country_event = {
 					add_building = building_hydroponics_farm
 				}
 			}
-
-
-			# rogue servitors get pops moved, everyone else gets them regenerated to avoid unemployment
-			# otherwise the RS pop generation will use the very last species for the pampered organics not the original ones
-			if = {
-				limit = {
-					root = {
-						NOR = {
-							has_civic = civic_machine_servitor
-							has_civic = civic_machine_assimilator
-						}
-					}
-				}
-				generate_start_pops = yes
-			}
 		}
 
 
@@ -234,28 +230,31 @@ country_event = {
 		}
 
 		# Remove the old home planet
-		event_target:previous_home_planet = {
-			# non gestalts get new pops, gestalts get pops moved to make servitors work
-			if = {
-				limit = {
-					root = { 
-						OR = {
-							has_civic = civic_machine_servitor
-							has_civic = civic_machine_assimilator
-						}
-					}
+		event_target:previous_home_planet = {			
+			#resettle all the pops
+			every_owned_pop = {
+				resettle_pop = {
+					pop = this
+					planet = event_target:birch_world
 				}
-				every_owned_pop = {
-					resettle_pop = {
-						pop = this
-						planet = event_target:birch_world
-					}
-					unemploy_pop = yes
-				}
+				unemploy_pop = yes
 			}
+
+			# remove the planet
 			change_pc = pc_nuked
 			destroy_colony = yes
 			reroll_planet = yes
+		}
+
+		# 2.6 introduced a change to the every_owned_pop = { resettle_pop = { loop where it would recalculate jobs between
+		# and end up with unemployed rulers.  
+		# 2.7 has given some effects to fix this: force an unemploy, demote to worker and then rerun the employment calculation
+		event_target:birch_world = {
+			every_owned_pop = {
+				unemploy_pop = yes
+				clear_pop_category = yes
+			}
+			check_planet_employment = yes
 		}
 
 		# unclaim the old home system
@@ -263,6 +262,7 @@ country_event = {
 			every_fleet_in_system = {
 				delete_fleet = this
 			}
+			# Alas this doesn't work, despite the documentation, there seems to be no way to "unsurvey" a system
 			every_system_planet = {
 				surveyed = {
 					set_surveyed = no
@@ -285,15 +285,25 @@ country_event = {
             set_species_homeworld = event_target:birch_world
 		}
 
+		# set the relevant gigastructures flags
 		country_event = {
 			id = bws.2
 			days = 2
 		}
+
+		# Does the player want to trigger the contingency for shits and giggles?
 		country_event = {
 			id = bws.30
 			days = 20
 		}
 
+		# Had a number of complaints about instant death that were caused by one of
+		# User Error (not enabling gigastructures)
+		# Launcher Error (launcher had decided to not update / corrupt gigastructures)
+		# This event checks to see if the birch world spawned, if not, it's usually because of one of the 2,
+		# so pops up a message telling the player.  In the hope that they read it and resolve it themselves
+		# before asking me about it.  
+		# It's a faint hope.  
 		if = {
 			limit = {
 				NOT = {
@@ -325,7 +335,7 @@ country_event = {
 	}
 }
 
-#Fail Message
+#Fail Message - was uanble to spawn birch world
 country_event = {
 	id = bws.3
 	is_triggered_only = yes
@@ -337,7 +347,10 @@ country_event = {
 	}
 }
 
-
+# Spawn the rest of the galatic core.  This is almost identical to the vanilla gigastructures event
+# Just doesn't spawn the core (obs), has to be a bit more militent with its isolate script 
+# and doesn't spawn the final hyperlane links to th rest of the galaxy.
+# Called by player pressing start.
 country_event = {
 	id = bws.9
 	title = birch.10.alt.name
@@ -508,9 +521,6 @@ country_event = {
 		set_spawn_system_batch = end
 
 		hidden_effect = { save_event_target_as = find_galactic_core_owner }
-		
-		#backwards compatibility
-		set_country_flag = bws_new_start
 	}
 	
 	option = {
@@ -546,7 +556,7 @@ country_event = {
 
 
 
-# spawn megastructures
+# spawn megastructures for super OP start
 event = {
 	id = bws.10
 	hide_window = yes
@@ -601,7 +611,7 @@ event = {
 				trigger_megastructure_icon = yes
 			}
 
-			# need to wait unti lthe MS is spawned to put GPM on it, so trigger bws.11 at the end of this in a day
+			# need to wait until the MS is spawned to put GPM on it, so trigger bws.11 at the end of this in a day
 			spawn_megastructure = {
 				type = ring_shipyard_2
 				location = event_target:molten_shipyard
@@ -745,61 +755,19 @@ country_event = {
 	}
 }
 
-
-# backwards compatibility
-country_event = {
-	id = bws.20
-	is_triggered_only = yes
-	hide_window = yes
-	
-	trigger = {
-		NOT = { has_country_flag = bws_new_start }
-		has_origin = origin_bws
-		mid_game_years_passed >= 1
-	}
-
-	immediate = {
-		country_event = {
-			id = bws.21
-		}
-	}
-}
-
-country_event = {
-	id = bws.22
-	hide_window = yes
-	is_triggered_only = yes
-	fire_only_once = yes
-	
-	trigger = {
-		NOT = { has_country_flag = bws_new_start }
-		has_origin = origin_bws
-		mid_game_years_passed < 1
-	}
-
-	immediate = {
-		set_country_flag = bws_new_start
-		capital_scope = {
-			enable_special_project = {
-				name = "INVESTIGATE_GALACTIC_CORE_LINK"
-				location = this
-				owner = root
-			}
-		}
-	}
-}
-
 # perform linking
 country_event = {
 	id = bws.21
 	title = bws.21.name
 	desc = {
+		# Player initated
 		trigger = {
 			has_country_flag = bws_completed_hyperlane_project
 		}
 		text = bws.21.desc
 	}
 	desc = {
+		# Endgame has occured, player gets forceably connected
 		trigger = {
 			not = { has_country_flag = bws_completed_hyperlane_project }
 		}
@@ -865,7 +833,7 @@ country_event = {
 	}
 }
 
-# link in the endgame
+# Force link in the endgame if the player hasn't done it themselves.
 country_event = {
 	id = bws.23
 	hide_window = yes

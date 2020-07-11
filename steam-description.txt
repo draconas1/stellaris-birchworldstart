@@ -2,9 +2,7 @@
 
 This gives you an origin that lets you start on a Birch World in the Galactic Core and appreciate the amazing Birch World graphics.  Elowiny swears that the symbols on it are actually planet sized habitats, I prefer to believe they are arcane runes because Birch World is Space Magic!
 
-It is an addition to, and requires [url=https://steamcommunity.com/workshop/filedetails/?id=1121692237]Gigastructural Engineering[/url]
-
-The birch world and surrounding systems will spawn on game start, and in the midgame the galactic core will automatically connect to the rest of the galaxy.
+[h1]It is an addition to, and requires [url=https://steamcommunity.com/workshop/filedetails/?id=1121692237]Gigastructural Engineering[/url][/h1]
 
 You may find it's not actually as cushy a start as first appears.  Birch worlds are designed for much higher populations.  You need 200 just to build 1 of each district.  Be prepared to do some job management on starting: Dark Matter is less useful to you than food and consumer goods.
 
@@ -12,6 +10,25 @@ There is an option on starting that will seed the galactic core with a number of
 
 The game will hang on first start as it spawns the systems, this hanging is proportional to galaxy size.
 
+The Galactic Core Cluster will start as disconnected from the rest of the galaxy, you will have a special project that will complete the linkage (the same "outer" 3 systems as gigastructures will connect).  If you do not research the special project by the start of the end game, the cluster will automatically link to the rest of the galaxy in endgame + 1 year.
+
+Early in the game you will have the opportunity to "pursue your ancestors knowledge".  This will summon the Contingency, there is no other effect.  It's a bit experimental since the contingency is not meant to appear this early.  The people with the power to construct a Birch World are also the people who would create a class-30 singularity event.
+
+[h1]Related[/h1]
+Seeker Erebus  has made a rebalance mod for Birch World that fixes some of the issue with unbalances in the jobs, particularly around amenities for Hive Minds. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2119165526]Birch World Rebalance[/url].  Load the balance after BWO if using it.
+
+[b]Cool Scale Fact by stephen wall [/b]
+[i]Random Fact: 6.15^14 kilometres from our supermassive black hole is 1 earth gravity. Take that as the radius of the Birchworld sphere would give you an area of 47 quadrillion km.
+
+The surface area of Earth is 510 million km with a pop of 7.5 billion.
+
+The surface of the Birch world would then be 92 million times that of Earth for a pop of nearly a Quintillion (18 zeros).[/i]
+
+
+[h1]IMPORTANT[/h1]
+There is a bug in the game where if there is not a connecting hyperlane between you and another empire (because you found them by having your science ships use jumps to get back to the main galaxy), the distance penalty you normally get in diplomacy overflows and wraps around into positive, so everyone becomes desperate to make treaties with you because their diplomacy distance penalty, rather than being -1000 is about +545739475743826786
+
+This goes away as soon as you open the core cluster there is a hyperlane connection.  
 
 [h1]My Other Mods[/h1]
 [list]

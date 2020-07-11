@@ -1,3 +1,8 @@
+# The birch world is designed for a lot more pops than the player starts with
+# So getting the right jobs filled is vital to the starting economy
+# which means that for regular empires we need a way to demote specialists back to being workers
+# especially on game start, where there will be a bunch of dark matter specialists
+# but not enough workers to farm.
 decision_bws_demote = {
 	owned_planets_only = yes
 	icon = decision_alien_propaganda

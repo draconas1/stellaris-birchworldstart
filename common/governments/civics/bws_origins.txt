@@ -15,9 +15,7 @@ origin_bws = {
 	possible = {
 	}
 
-	# No random weights because weight = 0 does not actually mean 0 and the AI still takes it.
-	# No random_weight block removes it from the lists
-
+	# best way I have found to actually stop the AI taking the origin
 	random_weight = { value = 0 }
 }
 
